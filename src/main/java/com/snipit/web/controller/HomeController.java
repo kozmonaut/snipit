@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	
 	@RequestMapping("/")
-	public String welcome(Model model) {
+	public String home(Model model) {
 		model.addAttribute("greeting","Welcome to SnipIt");
 		model.addAttribute("subtitle","Your project tracking snipping tool");
-		return "welcome";
+		
+		return "home";
 	}
 
 }
