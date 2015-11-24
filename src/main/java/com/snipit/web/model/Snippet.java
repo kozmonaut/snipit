@@ -8,6 +8,7 @@ public class Snippet {
 	private String code;
 	private String project;
 	private String label;
+	private Integer popularity;
 	
 	public Snippet() {
 		super();
@@ -54,6 +55,12 @@ public class Snippet {
 	}
 	public void setLabel(String label) {
 		this.label = label;
+	}
+	public Integer getPopularity() {
+		return popularity;
+	}
+	public void setPopularity(Integer popularity) {
+		this.popularity = popularity;
 	}
 	
 	@Override
