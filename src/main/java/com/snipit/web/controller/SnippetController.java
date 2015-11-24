@@ -5,16 +5,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.snipit.web.model.Snippet;
+import com.snipit.web.model.repository.SnippetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class SnippetController {
-	@RequestMapping("/snippets")
-	public String list(Model model) {
-		Snippet tomcat = new Snippet("1","Tomcat","Java");
-		tomcat.setDescription("This is Tomcat AS configuration file.");
-		tomcat.setProject("Project One");
+    
+    @Autowired
+    private SnippetRepository snippetRepository;
 
-		model.addAttribute("snippet", tomcat);
-		return "snippets";
-	}
+    @RequestMapping("/snippets")
+    public String list(Model model) {
+
+	model.addAttribute("snippets", snippetRepository.getAllSnippets());
+	return "snippets";
+    }
+    
 }
