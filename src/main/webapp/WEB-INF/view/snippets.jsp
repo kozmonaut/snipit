@@ -11,6 +11,9 @@
 		<div class="container">
 		    <h1>Snippets</h1>
 		    <p>Currently added code snippets.</p>
+		    <div class="pull-right" style="padding-right:50px">
+			<a href="?language=en">English</a>|<a href="?language=hr">Croatian</a>
+		    </div>
 		</div>
 	    </div>
 	</section>
