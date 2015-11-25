@@ -22,6 +22,7 @@
 			    <div class="caption">
 				<h3><b>${snippet.project}</b> - ${snippet.name}</h3>
 				<p>${snippet.description}</p>
+				<p><c:if test="${snippet.popularity > 5}"><span class="btn btn-warning">Popular</span></c:if></p>
 				<p><span class="btn btn-info">${snippet.label}</span></p>
 			    </div>
 			</div>
