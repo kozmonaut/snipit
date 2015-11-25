@@ -17,5 +17,15 @@ public class SnippetServiceImpl implements SnippetService {
     public List<Snippet> getAllSnippets() {
 	return snippetRepository.getAllSnippets();
     }
+    
+    @Override
+    public Snippet getSnippetById(String snippetId) {
+	return snippetRepository.getSnippetById(snippetId);
+    }
+    
+    @Override
+    public List<Snippet> getSnippetsByProject(String project) {
+	return snippetRepository.getSnippetsByProject(project);
+    }
 
 }

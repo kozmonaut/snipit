@@ -5,4 +5,5 @@ import java.util.List;
 public interface SnippetRepository {
     List <Snippet> getAllSnippets();
     Snippet getSnippetById(String snippetId);
+    List<Snippet> getSnippetsByProject(String project);
 }

@@ -11,14 +11,13 @@ import com.snipit.web.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
-	@Autowired
+
+    @Autowired
     private UserRepository userRepository;
 
-	@Override
+    @Override
     public List<User> getAllUsers() {
 	return userRepository.getAllUsers();
     }
-    
 
 }

@@ -9,13 +9,14 @@ import com.snipit.web.service.UserService;
 
 @Controller
 public class UserController {
-	
-	 @Autowired
-	 private UserService userService;
-	 @RequestMapping("/users")
-	 public String list(Model model) {
-		 model.addAttribute("users", userService.getAllUsers());
-		 return "users";
-	 }
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping("/users")
+    public String list(Model model) {
+	model.addAttribute("users", userService.getAllUsers());
+	return "users";
+    }
 
 }

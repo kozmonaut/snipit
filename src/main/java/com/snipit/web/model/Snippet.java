@@ -1,10 +1,13 @@
 package com.snipit.web.model;
 
+import java.util.Date;
+
 public class Snippet {
 	
 	private String snippetId;
 	private String name;
 	private String description;
+	private Date creationDate;
 	private String code;
 	private String project;
 	private String label;
@@ -37,6 +40,12 @@ public class Snippet {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Date getCreationDate() {
+		return creationDate;
+	}
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 	public String getCode() {
 		return code;

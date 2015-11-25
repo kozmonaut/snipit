@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.snipit.web.model.Snippet;
 import com.snipit.web.model.repository.SnippetRepository;
+import java.util.Date;
 
 @Repository
 public class InMemorySnippetRepository implements SnippetRepository {
@@ -16,17 +17,20 @@ public class InMemorySnippetRepository implements SnippetRepository {
     public InMemorySnippetRepository() {
 	Snippet tomcat = new Snippet("1", "Tomcat", "Java");
 	tomcat.setDescription("This is Tomcat AS configuration file.");
-	tomcat.setProject("Project One");
+	tomcat.setCreationDate(new Date());
+	tomcat.setProject("Project1");
 	tomcat.setPopularity(6);
 
 	Snippet glassfish = new Snippet("2", "Glassfish", "Server");
 	glassfish.setDescription("This is Glassfish AS configuration file.");
-	glassfish.setProject("Project Two");
+	glassfish.setCreationDate(new Date());
+	glassfish.setProject("Project2");
 	glassfish.setPopularity(3);
 
 	Snippet gitconfig = new Snippet("3", "Gitconfig", "Git");
 	gitconfig.setDescription("This is gitconfig configuration file.");
-	gitconfig.setProject("Project Three");
+	gitconfig.setCreationDate(new Date());
+	gitconfig.setProject("Project3");
 	gitconfig.setPopularity(13);
 
 	listOfSnippets.add(tomcat);
@@ -53,6 +57,17 @@ public class InMemorySnippetRepository implements SnippetRepository {
 	    throw new IllegalArgumentException("No snippets found with the snippet id: " + snippetId);
 	}
 	return snippetById;
+    }
+
+    @Override
+    public List<Snippet> getSnippetsByProject(String project) {
+	List<Snippet> snippetsByProject = new ArrayList<Snippet>();
+	for (Snippet snippet : listOfSnippets) {
+	    if (project.equalsIgnoreCase(snippet.getProject())) {
+		snippetsByProject.add(snippet);
+	    }
+	}
+	return snippetsByProject;
     }
 
 }
