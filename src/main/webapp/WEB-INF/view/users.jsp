@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
     <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
@@ -11,6 +12,10 @@
 		<div class="container">
 		    <h1>Users</h1>
 		    <p>List of all users.</p>
+		</div>
+		<div class="pull-right" style="padding-right:50px">
+		    <a href="?language=en"><span class="btn btn-info">EN</span></a>|<a href="?language=hr"><span class="btn btn-info">HR</span></a> 
+		    <a href="<c:url value="/j_spring_security_logout"/>" class="btn btn-danger btn-mini pull-right">Logout</a>
 		</div>
 	    </div>
 	</section>
