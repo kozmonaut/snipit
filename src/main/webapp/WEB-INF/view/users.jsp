@@ -10,7 +10,7 @@
 	<section>
 	    <div class="jumbotron">
 		<div class="container">
-		    <h1>Users</h1>
+		    <h2>Users</h2>
 		    <p>List of all users.</p>
 		</div>
 		<div class="pull-right" style="padding-right:50px">

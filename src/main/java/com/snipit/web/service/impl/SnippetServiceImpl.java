@@ -30,4 +30,12 @@ public class SnippetServiceImpl implements SnippetService {
     public Set<Snippet> getSnippetsByFilter(Map<String, List<String>> filterParams) {
 	return snippetRepository.getSnippetsByFilter(filterParams);
     }
+    
+    public void addSnippet(Snippet snippet) {
+	snippetRepository.addSnippet(snippet);
+    }
+    
+    public void deleteSnippet(Snippet snippet) {
+	snippetRepository.deleteSnippet(snippet);
+    }
 }

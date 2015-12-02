@@ -101,5 +101,13 @@ public class InMemorySnippetRepository implements SnippetRepository {
     snippetsByProject.retainAll(snippetsByLabel);
     return snippetsByProject;
     }
+    
+    public void addSnippet(Snippet snippet) {
+	listOfSnippets.add(snippet);
+    }
+    
+    public void deleteSnippet(Snippet snippet) {
+	listOfSnippets.remove(snippet);
+    }
 }
 

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
     <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
@@ -9,7 +10,7 @@
 	<section>
 	    <div class="jumbotron">
 		<div class="container">
-		    <h1>Snippet details</h1>
+		    <h2>Snippet details</h2>
 		</div>
 	    </div>
 	</section>
@@ -24,7 +25,10 @@
 		    <p><strong>Popularity:</strong>${snippet.popularity}</p>
 		    <p style="background-color:#ddd;padding:5px;">${snippet.code}</p>
 		    <a href="#" class="btn btn-warning btn-large"><span class="glyphicon-plus glyphicon"/>Add to collection</a>
+		    <a href="<spring:url value="/snippets/delete/${snippet.snippetId}" />" class="btn btn-danger btn-large"><span class="glyphicon-trash glyphicon"/>Delete snippet</a>
 		</div>
+		<a href="<spring:url value="/snippets/all" />" class="btn btn-info">
+		   <span class="glyphicon glyphicon-hand-left"/>Back to snippets</a>
 	    </div>
 	</section>
     </body>

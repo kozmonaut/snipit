@@ -10,7 +10,7 @@
 	<section>
 	    <div class="jumbotron">
 		<div class="container">
-		    <h1>Snippets</h1>
+		    <h2>Snippets</h2>
 		    <p>Currently added code snippets.</p>
 
 		</div>
@@ -26,7 +26,7 @@
 		    <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 			<div class="thumbnail">
 			    <div class="caption">
-				<h3><b>${snippet.project}</b> - ${snippet.name}</h3>
+				<h3><b>${snippet.project}</b> - <a href="<spring:url value="/snippets/snippet?id=${snippet.snippetId}" />">${snippet.name}</a></h3>
 				<p><it>${snippet.snippetId}</it>
 				<p><it>${snippet.creationDate}</it>
 				<p>${snippet.description}</p>

@@ -9,4 +9,6 @@ public interface SnippetRepository {
     Snippet getSnippetById(String snippetId);
     List<Snippet> getSnippetsByProject(String project);
     Set<Snippet> getSnippetsByFilter(Map<String, List<String>> filterParams);
+    void addSnippet(Snippet snippet);
+    void deleteSnippet(Snippet snippet);
 }

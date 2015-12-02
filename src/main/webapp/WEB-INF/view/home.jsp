@@ -10,7 +10,7 @@
 	<section>
 	    <div class="jumbotron">
 		<div class="container">
-		    <h1>${greeting}</h1>
+		    <h2>${greeting}</h2>
 		    <p>${subtitle}</p>
 		</div>
 		<div class="pull-right" style="padding-right:50px">
