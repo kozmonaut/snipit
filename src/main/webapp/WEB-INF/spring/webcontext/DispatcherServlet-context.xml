@@ -22,5 +22,7 @@
 	    <property name="paramName" value="language"/>
 	</bean>
     </mvc:interceptors>
+    
+    <mvc:annotation-driven enable-matrix-variables="true"/>
 	
 </beans>

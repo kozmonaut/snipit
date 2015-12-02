@@ -26,7 +26,7 @@
 			<div class="thumbnail">
 			    <div class="caption">
 				<h3><b>${user.userId}</b> - ${user.name}</h3>
-				<p><span class="btn btn-info">${user.role}</span></p>
+				<p><span class="label label-info">${user.role}</span></p>
 			    </div>
 			</div>
 		    </div>

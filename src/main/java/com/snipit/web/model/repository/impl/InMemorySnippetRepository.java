@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 import com.snipit.web.model.Snippet;
 import com.snipit.web.model.repository.SnippetRepository;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 @Repository
 public class InMemorySnippetRepository implements SnippetRepository {
@@ -58,7 +61,8 @@ public class InMemorySnippetRepository implements SnippetRepository {
 	}
 	return snippetById;
     }
-
+    
+    // Fetch snippet by project
     @Override
     public List<Snippet> getSnippetsByProject(String project) {
 	List<Snippet> snippetsByProject = new ArrayList<Snippet>();
@@ -69,5 +73,31 @@ public class InMemorySnippetRepository implements SnippetRepository {
 	}
 	return snippetsByProject;
     }
+    
+     // Fetch snippet by filter(label, project)
+    public Set<Snippet> getSnippetsByFilter(Map<String, List<String>> filterParams) {
+	Set<Snippet> snippetsByLabel = new HashSet<Snippet>();
+	Set<Snippet> snippetsByProject = new HashSet<Snippet>();
+	Set<String> criterias = filterParams.keySet();
 
+	if (criterias.contains("label")) {
+	    for (String labelName : filterParams.get("label")) {
+		for (Snippet snippet : listOfSnippets) {
+		    if (labelName.equalsIgnoreCase(snippet.getLabel())) {
+			snippetsByLabel.add(snippet);
+		    }
+		}
+	    }
+	}
+	if (criterias.contains("project")) {
+	    for (String project : filterParams.get("project")) {
+		snippetsByProject.addAll(this.getSnippetsByProject(project));
+
+	    }
+	}
+
+    snippetsByProject.retainAll(snippetsByLabel);
+    return snippetsByProject;
+    }
 }
+
