@@ -23,18 +23,21 @@ public class InMemorySnippetRepository implements SnippetRepository {
 	tomcat.setCreationDate(new Date());
 	tomcat.setProject("Project1");
 	tomcat.setPopularity(6);
+	tomcat.setCode("lorem ipsum code: dummy");
 
 	Snippet glassfish = new Snippet("2", "Glassfish", "Server");
 	glassfish.setDescription("This is Glassfish AS configuration file.");
 	glassfish.setCreationDate(new Date());
 	glassfish.setProject("Project2");
 	glassfish.setPopularity(3);
+	glassfish.setCode("lorem ipsum code: dummy");
 
 	Snippet gitconfig = new Snippet("3", "Gitconfig", "Git");
 	gitconfig.setDescription("This is gitconfig configuration file.");
 	gitconfig.setCreationDate(new Date());
 	gitconfig.setProject("Project3");
 	gitconfig.setPopularity(13);
+	gitconfig.setCode("lorem ipsum code: dummy");
 
 	listOfSnippets.add(tomcat);
 	listOfSnippets.add(glassfish);
@@ -63,7 +66,6 @@ public class InMemorySnippetRepository implements SnippetRepository {
     }
     
     // Fetch snippet by project
-    @Override
     public List<Snippet> getSnippetsByProject(String project) {
 	List<Snippet> snippetsByProject = new ArrayList<Snippet>();
 	for (Snippet snippet : listOfSnippets) {

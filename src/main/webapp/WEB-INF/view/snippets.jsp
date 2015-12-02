@@ -27,6 +27,7 @@
 			<div class="thumbnail">
 			    <div class="caption">
 				<h3><b>${snippet.project}</b> - ${snippet.name}</h3>
+				<p><it>${snippet.snippetId}</it>
 				<p><it>${snippet.creationDate}</it>
 				<p>${snippet.description}</p>
 				<p><c:if test="${snippet.popularity > 5}"><span class="btn btn-warning">Popular</span></c:if></p>

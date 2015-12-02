@@ -1,5 +1,6 @@
 package com.snipit.web.controller;
 
+import com.snipit.web.model.Snippet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/snippets")
@@ -43,4 +45,10 @@ public class SnippetController {
 	return "snippets";
     }
 
+    @RequestMapping("/snippet")
+    public String getSnippetById(Model model, @RequestParam("id") String snippetId) {
+	Snippet snippet = snippetService.getSnippetById(snippetId);
+	model.addAttribute("snippet", snippet);
+	return "snippet";
+    }
 }
