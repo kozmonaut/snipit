@@ -17,7 +17,7 @@
 	<section class="container">
 	    <div class="row">
 		<div class="col-md-5">
-		    <h3>${snippet.name}</h3>
+		    <h3>${snippet.name} - <a href="<spring:url value="/like/${snippet.snippetId}/1" />" class="btn btn-danger btn-large">Like</a></h3>
 		    <p>${snippet.description}</p>
 		    <p><strong>Label:</strong><span class="label label-warning">${snippet.label}</span></p>
 		    <p><strong>Creation date:</strong>${snippet.creationDate}</p>
