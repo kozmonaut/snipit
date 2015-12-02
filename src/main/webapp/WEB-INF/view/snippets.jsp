@@ -24,14 +24,14 @@
 	    <div class="row">
 		<c:forEach items="${snippets}" var="snippet">
 		    <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-			<div class="thumbnail">
-			    <div class="caption">
-				<h3><b>${snippet.project}</b> - <a href="<spring:url value="/snippets/snippet?id=${snippet.snippetId}" />">${snippet.name}</a></h3>
-				<p><it>${snippet.snippetId}</it>
-				<p><it>${snippet.creationDate}</it>
-				<p>${snippet.description}</p>
-				<p><c:if test="${snippet.popularity > 5}"><span class="btn btn-warning">Popular</span></c:if></p>
-				<p><span class="btn btn-info">${snippet.label}</span></p>
+			<div class="thumbnail" style="position:relative;">
+			    <img src="<c:url value="/resources/images/project-bg.png"></c:url>" alt="snippet-image"/>
+			    <span class="label label-info" style="top:10px;left:0;position: absolute;">${snippet.label}</span>
+				 <div class="caption">
+				 <h3><b>${snippet.project}</b> - <a href="<spring:url value="/snippets/snippet?id=${snippet.snippetId}" />">${snippet.name}</a></h3>
+				 <p><it>${snippet.creationDate}</it></p>
+				 <p>${snippet.description}</p>
+				 <p><c:if test="${snippet.popularity > 5}"><span class="label label-warning">Popular</span></c:if></p>
 			    </div>
 			</div>
 		    </div>
