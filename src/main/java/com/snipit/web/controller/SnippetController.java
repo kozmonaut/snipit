@@ -1,5 +1,7 @@
 package com.snipit.web.controller;
 
+import com.snipit.web.exception.NoSnippetsFoundUnderProjectException;
+import com.snipit.web.exception.SnippetNotFoundException;
 import com.snipit.web.model.Snippet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +14,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/snippets")
@@ -43,7 +47,12 @@ public class SnippetController {
     // List snippets by project
     @RequestMapping("/{project}")
     public String getSnippetsByProject(Model model, @PathVariable("project") String snippetProject) {
-	model.addAttribute("snippets", snippetService.getSnippetsByProject(snippetProject));
+	List<Snippet> snippets = snippetService.getSnippetsByProject(snippetProject);
+
+	if (snippets == null || snippets.isEmpty()) {
+	    throw new NoSnippetsFoundUnderProjectException();
+	}
+	model.addAttribute("snippets", snippets);
 	return "snippets";
     }
 
@@ -75,9 +84,9 @@ public class SnippetController {
     public String setAddSnippet(@ModelAttribute("newSnippet") Snippet newSnippet, HttpServletRequest request) {
 	MultipartFile snippetImage = newSnippet.getSnippetImage();
 	MultipartFile snippetFile = newSnippet.getSnippetFile();
-	
+
 	String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-	
+
 	// Adding snippet image
 	if (snippetImage != null && !snippetImage.isEmpty()) {
 	    try {
@@ -86,7 +95,7 @@ public class SnippetController {
 		throw new RuntimeException("Snippet Image saving failed", e);
 	    }
 	}
-	
+
 	// Adding snippet file
 	if (snippetFile != null && !snippetFile.isEmpty()) {
 	    try {
@@ -104,5 +113,15 @@ public class SnippetController {
 	Snippet snippet = snippetService.getSnippetById(snippetId);
 	snippetService.deleteSnippet(snippet);
 	return "redirect:/snippets/";
+    }
+
+    @ExceptionHandler(SnippetNotFoundException.class)
+    public ModelAndView handleError(HttpServletRequest req, SnippetNotFoundException exception) {
+	ModelAndView mav = new ModelAndView();
+	mav.addObject("invalidSnippetId", exception.getSnippetId());
+	mav.addObject("exception", exception);
+	mav.addObject("url", req.getRequestURL() + "?" + req.getQueryString());
+	mav.setViewName("snippetNotFound");
+	return mav;
     }
 }

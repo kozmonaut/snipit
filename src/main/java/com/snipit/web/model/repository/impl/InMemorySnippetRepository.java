@@ -1,5 +1,6 @@
 package com.snipit.web.model.repository.impl;
 
+import com.snipit.web.exception.SnippetNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
@@ -60,7 +61,7 @@ public class InMemorySnippetRepository implements SnippetRepository {
 	    }
 	}
 	if (snippetById == null) {
-	    throw new IllegalArgumentException("No snippets found with the snippet id: " + snippetId);
+	    throw new SnippetNotFoundException("No snippets found with the snippet id: " + snippetId);
 	}
 	return snippetById;
     }
