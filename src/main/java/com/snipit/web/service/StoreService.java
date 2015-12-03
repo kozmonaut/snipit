@@ -1,8 +1,7 @@
 package com.snipit.web.service;
 
-import com.snipit.web.model.Snippet;
-
 public interface StoreService {
     
-    void storeSnippet(String snippetId, int count);
+    void likeSnippet(String snippetId, int count);
+    void dislikeSnippet(String snippetId, int count);
 }

@@ -17,7 +17,7 @@
 	    </div>
 	</section>
 	<section class="container">
-	    <form:form modelAttribute="newSnippet" class="form-horizontal">
+	    <form:form modelAttribute="newSnippet" enctype="multipart/form-data" class="form-horizontal">
 		<fieldset>
 		    <legend>Fill the form</legend>
 		    <div class="form-group">
@@ -55,10 +55,28 @@
 			    <form:input id="project" path="project" type="text" class="form:input-large"/>
 			</div>
 		    </div>
+		    <div class="form-group" style="display:none;">
+			<label class="control-label col-lg-2" for="popularity">Popularity</label>
+			<div class="col-lg-10">
+			    <form:input id="popularity" path="popularity" type="text" class="form:input-large"/>
+			</div>
+		    </div>
 		    <div class="form-group">
 			<label class="control-label col-lg-2 col-lg-2" for="productId">Code</label>
 			<div class="col-lg-10">
 			    <form:textarea id="code" path="code" rows="10"  cols="80" class="form:input-large"/>
+			</div>
+		    </div>
+		    <div class="form-group">
+			<label class="control-label col-lg-2" for="snippetImage">Snippet Image</label>
+			<div class="col-lg-10">
+			    <form:input id="snippetImage" path="snippetImage" type="file" class="form:input-large" />
+			</div>
+		    </div>
+		    <div class="form-group">
+			<label class="control-label col-lg-2" for="snippetFile">Snippet file</label>
+			<div class="col-lg-10">
+			    <form:input id="snippetFile" path="snippetFile" type="file" class="form:input-large" />
 			</div>
 		    </div>
 		    <div class="form-group">

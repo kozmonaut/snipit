@@ -14,11 +14,14 @@ public class StoreServiceImpl implements StoreService {
     private SnippetRepository snippetRepository;
 
     @Override
-    public void storeSnippet(String snippetId, int popularity) {
+    public void likeSnippet(String snippetId, int popularity) {
 	Snippet snippetById = snippetRepository.getSnippetById(snippetId);
-	if (snippetById.getPopularity() < popularity) {
-	    throw new IllegalArgumentException("Current popularity" + snippetById.getPopularity());
-	}
 	snippetById.setPopularity(snippetById.getPopularity() + popularity);
+    }
+    
+    @Override
+    public void dislikeSnippet(String snippetId, int popularity) {
+	Snippet snippetById = snippetRepository.getSnippetById(snippetId);
+	snippetById.setPopularity(snippetById.getPopularity() - popularity);
     }
 }

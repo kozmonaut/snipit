@@ -1,17 +1,20 @@
 package com.snipit.web.model;
 
 import java.util.Date;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Snippet {
 	
 	private String snippetId;
 	private String name;
 	private String description;
-	private Date creationDate;
+	private Date creationDate = new Date();
 	private String code;
 	private String project;
 	private String label;
-	private Integer popularity;
+	private Integer popularity = 0;
+	private MultipartFile snippetImage;
+	private MultipartFile snippetFile;
 	
 	public Snippet() {
 		super();
@@ -70,6 +73,18 @@ public class Snippet {
 	}
 	public void setPopularity(Integer popularity) {
 		this.popularity = popularity;
+	}
+	public MultipartFile getSnippetImage() {
+		return snippetImage;
+	}
+	public void setSnippetImage(MultipartFile snippetImage) {
+		this.snippetImage = snippetImage;
+	}
+	public MultipartFile getSnippetFile() {
+		return snippetFile;
+	}
+	public void setSnippetFile(MultipartFile snippetFile) {
+		this.snippetFile = snippetFile;
 	}
 	
 	@Override

@@ -16,8 +16,15 @@ public class StoreController {
     
     // Increase snippet popularity and redirect to snippets
     @RequestMapping("/like/{id}/1")
-    public String process(Model model, @PathVariable("id") String snippetId) {
-	storeService.storeSnippet(snippetId, 1);
+    public String processLike(Model model, @PathVariable("id") String snippetId) {
+	storeService.likeSnippet(snippetId, 1);
+	return "redirect:/snippets/snippet?id={id}";
+    }
+    
+    // Decrease snippet popularity and redirect to snippets
+    @RequestMapping("/dislike/{id}/1")
+    public String processDislike(Model model, @PathVariable("id") String snippetId) {
+	storeService.dislikeSnippet(snippetId, 1);
 	return "redirect:/snippets/snippet?id={id}";
     }
 
